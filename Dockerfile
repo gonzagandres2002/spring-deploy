@@ -1,13 +1,10 @@
-# Use the OpenJDK 21 base image
+FROM maven:3-eclipse-temurin-21-alpine AS build
+COPY . .
+RUN mvn clean package -DskipTests
+
 FROM eclipse-temurin:21
-
-# Add author information
-LABEL authors="andre"
-
-# Copy the JAR file into the working directory
-COPY spring-deploy-1.0.jar japp.jar
-
-# Set the entry point to run the JAR file
+COPY /target/spring-deploy-1.0.jar japp.jar
+EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "japp.jar"]
 
  
