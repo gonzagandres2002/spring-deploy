@@ -4,9 +4,6 @@ FROM eclipse-temurin:21
 # Add author information
 LABEL authors="andre"
 
-# Set the working directory in the container
-WORKDIR /app
-
 # Copy the JAR file into the working directory
 COPY spring-deploy-1.0.jar japp.jar
 
